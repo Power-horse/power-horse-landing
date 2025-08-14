@@ -313,10 +313,13 @@
             <p style="font-size: 1.1rem; margin-top: 1rem;"><strong>No Application Fees • No Experience Required • Start Earning Immediately</strong></p>
         </div>
         <div class="form-container">
-            <form id="applicationForm">
-                <div class="form-group">
-                    <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" name="fullName" required>
+            <form action="https://formspree.io/f/xayzqkqr" method="POST" id="applicationForm">
+    <input type="hidden" name="_subject" value="New Power Horse Application">
+    <input type="hidden" name="_next" value="https://power-horse.github.io/power-horse-landing/">
+    <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" name="fullName" required>
+    </div>
                 </div>
                 
                 <div class="form-group">
@@ -404,15 +407,20 @@
             });
         });
 
-        // Form submission handling - SIMPLE APPROACH
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
-            
-            // Basic validation
-            const age = document.getElementById('age').value;
-            if (age < 18) {
-                alert('You must be 18 or older to apply.');
-                return;
+        // Form submission handling
+document.getElementById('applicationForm').addEventListener('submit', function(e) {
+    // Basic validation
+    const age = document.getElementById('age').value;
+    if (age < 18) {
+        e.preventDefault();
+        alert('You must be 18 or older to apply.');
+        return;
+    }
+    
+    // Form will submit to Formspree automatically
+    // Show success message
+    alert('Thank you for your Power Horse application! Your information has been sent to our team. We will review your application and contact you within 12-24 hours.');
+});
             }
             
             // Get all form data
@@ -460,3 +468,4 @@ Submitted on: ${new Date().toLocaleString()}
     </script>
 </body>
 </html>
+
